@@ -3,39 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fake Data Table</title>
+    <title>Flask App</title>
     <!-- Include Tailwind CSS from CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-200 p-4">
-    <div class="max-w-screen-md mx-auto bg-white p-4 shadow-md">
-        <h1 class="text-2xl font-bold mb-4 text-center">Patient Data</h1>
 
-        <img src="https://alyssa-cdn.azureedge.net/exampleflask17/sun-blasts-a-m66-flare.jpg" alt="Image" class="mx-auto mb-4 items-center">
-        
-        
-        <table class="table-auto w-full bg-gray-100">
-            <thead>
-                <tr>
-                    <th class="px-4 py-2">First Name</th>
-                    <th class="px-4 py-2">Last Name</th>
-                    <th class="px-4 py-2">Date of Birth</th>
-                    <th class="px-4 py-2">Gender</th>
-                    <th class="px-4 py-2">Contact Number</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for patient in patients %}
-                    <tr>
-                        <td class="border px-4 py-2">{{ patient.first_name }}</td>
-                        <td class="border px-4 py-2">{{ patient.last_name }}</td>
-                        <td class="border px-4 py-2">{{ patient.date_of_birth }}</td>
-                        <td class="border px-4 py-2">{{ patient.gender }}</td>
-                        <td class="border px-4 py-2">{{ patient.contact_number }}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+<!-- Top Bar Nav -->
+<nav class="max-w-screen-md py-4 bg-blue-800 shadow mx-auto">
+    <div class="max-w-screen-md container mx-auto flex flex-wrap items-center justify-between">
+
+        <nav>
+            <ul class="flex items-center justify-between font-bold text-sm text-white uppercase no-underline text-center mx-auto">
+                <li><a class="hover:text-gray-200 hover:underline px-4" href="#">Home</a></li>
+                <li><a class="hover:text-gray-200 hover:underline px-4" href="https://github.com/jas-tang/flask_5_tailwind">Github</a></li>
+            </ul>
+        </nav>
     </div>
+</nav>
+
+<body class="bg-gray-800 p-4">
+    <div class="max-w-screen-md mx-auto bg-gray p-4">
+        <h1 class="text-2xl font-bold mb-4 text-center text-white">Flask App Showcase</h1>
+
+        <video controls class="mx-auto mb-4" width="640" height="360">
+            <source src="https://jason-cdn.azureedge.net/jason-flask-app/gcpazureflask.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+           
 </body>
+
+<footer class="max-w-screen-md py-4 bg-white shadow mx-auto">
+    <img src="https://www.stonybrookmedicine.edu/sites/default/files/cckimages/page/sbm_horz_1clr1.jpg"  alt="Image" class="mx-auto mb-4 items-center" style="width: 200px; height: 40px;">
+
+</footer>
+
 </html>
