@@ -71,4 +71,73 @@ The last section is the footer, which just contains an image of Stony Brook Medi
 
 ## Setting up the Cloud CDN
 
-I set up a storage account on Microsoft Azure. 
+I set up a storage account on Microsoft Azure. This acts as a repository for providing images, videos, data, etc. It is similar to a Google Drive or DropBox.
+
+![](https://github.com/jas-tang/flask_5_tailwind/blob/main/images/storageaccount.JPG)
+
+I then set up a container within the storage account.
+
+![](https://github.com/jas-tang/flask_5_tailwind/blob/main/images/storageaccount.JPG)
+
+This is where I can upload any file types. I uploaded my video here.
+
+![](https://github.com/jas-tang/flask_5_tailwind/blob/main/images/storagecontainer.JPG)
+
+As you can see, there are three different video formats of the same video. I found out that Azure does not support mkv or mov video format. I had to convert my video into a m9f file.
+
+To actually use this as a CDN, I then created a front door end point. 
+
+![](https://github.com/jas-tang/flask_5_tailwind/blob/main/images/frontdoorandcdn.JPG)
+
+The video source is the following link which is hosted in a CDN: https://jason-cdn.azureedge.net/jason-flask-app/gcpazureflask.mp4
+
+![](https://github.com/jas-tang/flask_5_tailwind/blob/main/images/CDN.JPG)
+
+## Cloud Deployment
+
+I deployed my web app on Microsoft Azure for the continuity. 
+
+I first installed Azure CLI: 
+```
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+```
+
+Then I tested if the install worked correctly with the following code: 
+```
+az
+```
+
+I gave permission to the shell with a Microsoft account: 
+```
+az login --use-device-code
+```
+
+Next, I located all subscription IDs within the shell
+```
+az account list --output table
+```
+
+Then, change the subscription approrpiate name. For my case, it was Azure for Students.
+
+```
+az account set --subscription (insert the subscription ID here)
+```
+
+Create a new resource group within the Azure Web Portal. It is located in the Resource Group tab. Ensure that the new group has its subscription set to the working subscription name. For my case, it was Azure for Students. 
+
+Create the web app and connect it to Microsoft Azure with the following code.
+```
+az webapp up --resource-group (insert group name) --name (insert your app name) --runtime <(Insert language)> --sku <(insert service plan)>
+az webapp up --resource-group Jason504 --name jastang504-flask --runtime Python:3.9 --sku b1
+```
+
+The application should now be deployed. Access your application via Microsoft Azure's App Services tab. 
+
+In the case that you need to redeploy the app, use the following code
+```
+az webapp up
+```
+
+This [link](https://jastang504-flask.azurewebsites.net/) leads you to my working deployed application. 
+If I deleted the the service to conserve cost, the following is an image of my working application. 
+![](https://github.com/jas-tang/flask_5_tailwind/blob/main/images/workingapp.JPG)
